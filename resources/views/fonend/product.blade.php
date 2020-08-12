@@ -19,6 +19,11 @@
           
         </div>
       </div>
+         <div class="col-sm-6">
+          <h3>Sản  Phẩm  :  {{$product->name_product}}</h3>
+          <h4>Loại Hàng :  {{$product->name_cat}}</h4>
+         <h4>Giá sản phẩm : {{number_format($product->price,0,',','.')}} VND</h4>
+         </div>
  </div>
 
 @endsection

@@ -17,6 +17,15 @@ class FontendController extends Controller
         $product =  DB::table('products')->join('categories','products.category','=','categories.id_cat')->where('status',1)->get();
     	return view('fonend.index',compact('data','cate','product','store'));
     }
+    public function search(Request $re)
+    {
+       $result = str_replace('%','',$re->text);
+        $cate = DB::table('categories')->get();
+      $store = DB::table('stores')->get();
+      $product = DB::table('products')->join('categories','products.category','=','categories.id_cat')->where('name_product',$result)->get();
+    
+      return view('fonend.seach',compact('cate','product','store'));
+    }
     public function getListSanPham()
     {
       $cate = DB::table('categories')->get();
@@ -147,21 +156,52 @@ class FontendController extends Controller
     public function postThanhToan(Request $re)
     {
 
-          $data = Session()->get('Cart');
+          $data = Session()->get('Cart')->product;
           $name_cus =  $re->name;
           $addre_cus = $re->address;
           $ema_cus  = $re->email;
           $phone_cus  = $re->phone;
-          $arrayCus = array('name_cus' =>$name_cus , 'addse_cus'=>$addre_cus , 'email_cus' => $ema_cus , 'phone_cus'=>$phone_cus );
-          // $insertCus = DB::table('customes')->insert($arrayCus);
+          $id_cus =  mt_rand(1, 1000600);
+          $arrayCus = array('id_cus'=>$id_cus,'name_cus' =>$name_cus , 'addse_cus'=>$addre_cus , 'email_cus' => $ema_cus , 'phone_cus'=>$phone_cus );
+           $insertCus = DB::table('customes')->insert($arrayCus);
+          
           foreach ($data as  $value) {
-            // # code...
+             
+            $product = $value["product"]->id_product;
+            $productTotal = $value["quanty"];
+            $price =  $value["price"];
+            $con = '';
+            $luong  =   DB::table('store_products')->select('toulde')->join('products','store_products.product','=','products.id_product')->join('stores','store_products.store','=','stores.id')->where('store',$re->stores)->where('product',$product)->get();
             echo "<pre>";
-             var_dump($value);
-             echo "</pre>";
-            // echo $value['product']->name_product;
-            // echo $value->quanty;
-          }
+            var_dump($luong);
+            echo "</pre>";
+            if($luong ==  array(0)){
+              echo "không bán sản phẩm này";
+            }
+            foreach ($luong as $key => $value) {
+           
+              if($productTotal < $value->toulde){
+                  $ise = array('custom'=>$id_cus , 'product'=>$product,'price'=>$price , 'stores'=>$re->stores,'quanty'=>$productTotal);
+                  $spc =$value->toulde - $productTotal;
+                  $conluong  = array('toulde'=>$spc);
+                  $bill = DB::table('bills')->insert($ise);
+                  $st = DB::table('store_products')->where('store',$re->stores)->where('product',$product)->update($conluong);
+              }else{
+                
+              }
+
+            }
+           
+            
+           }
+           $re->Session()->forget('Cart');
+           return redirect('fonend/');
    
+    }
+    public function lienhe()
+    {
+      $cate = DB::table('categories')->get();
+      $store = DB::table('stores')->get();
+      return view('fonend.lienhe',compact('cate','store'));
     }
 }

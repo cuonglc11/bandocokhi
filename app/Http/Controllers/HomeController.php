@@ -213,4 +213,16 @@ class HomeController extends Controller
         return redirect('liststoreproduct');
        
     }
+    public function getCustom(Request $re)
+    {
+        $product =  DB::table('bills')->join('products','bills.product','=','products.id_product')->join('stores','bills.stores','=','stores.id')->join('customes','bills.custom','=','customes.id_cus')->where('custom',$re->custom)->get();
+        $cus = DB::table('customes')->get();
+         $phone =  DB::table('customes')->where('id_cus',$re->custom)->get();
+         // dd($phone);
+          $sumPrice =  DB::table('bills')->where('custom',$re->custom)->sum('price');
+         $sumProduct =  DB::table('bills')->where('custom',$re->custom)->sum('quanty');
+
+        return view('backend.customs',compact('product','cus','phone','sumProduct','sumPrice'));
+            
+    }
 }

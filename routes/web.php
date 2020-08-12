@@ -29,6 +29,8 @@ Route::get('/createstore','HomeController@getCreateStore')->name('createstore');
 Route::post('/createstore','HomeController@postCreteStore');
 Route::get('/createstoreproduct','HomeController@getCreateStoreProduct')->name('createstoreproduct');
 Route::get('/liststoreproduct','HomeController@getProductStore')->name('liststoreproduct');
+Route::get('/getCustom','HomeController@getCustom')->name('getCustom');
+
 Route::post('/createstoreproduct','HomeController@postCreateStoreProduct');
 
 Route::post('/createproduct','HomeController@postCreateProduct');
@@ -68,5 +70,8 @@ Route::group(['prefix'=>'fonend'],function(){
    Route::get('fonend/deleteCart/{id}','FontendController@deleteCart');
    Route::post('SaveAll','FontendController@SaveAll');
    Route::get('DeleteAll','FontendController@DeleteAll');
+   Route::get('search','FontendController@search');
+    Route::get('lienhe','FontendController@lienhe');
+   
    
 });

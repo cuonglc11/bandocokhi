@@ -11,7 +11,7 @@
         @endforeach   
     </select>
 </div>
-<button type="submit" class="btn btn-primary">Thêm hàng Bán </button>
+<button type="submit" class="btn btn-primary">Kiểm tra hàng </button>
  {{csrf_field()}}
 </form>
 Số  Hàng của chí  nhánh  : {{$sumProduct}}

@@ -52,13 +52,7 @@
                     </div>
                 </div>
                 <div class="ht-right">
-                 <!--    <div class="lan-selector">
-                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="{{asset('img/co.png')}}" data-imagecss="flag yt"  
-                                data-title="English">VietNam</option>
-                           
-                        </select>
-                    </div> -->
+               
                     <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -79,10 +73,19 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
-                        <div class="advanced-search">
-                            <form action="#" class="input-group">
-                                <input type="text" placeholder="What do you need?" style="color: black ; font-size: 12px; font-weight :12px">
-                                <button type="button"><i class="ti-search"></i></button>
+                    <div class="advanced-search">
+                     <form method="get" action="{{asset('fonend/search/')}}" class="input-group">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" name="text" placeholder="Nhập từ khóa ...">
+                            </div>
+                            <div class="col-md-4">
+                                  <input type="submit" class="btn btn-primary" name="submit" value="Tìm Kiếm">
+                            </div>
+                        </div>
+                           
+                           
+
                             </form>
                         </div>
                     </div>
@@ -167,7 +170,7 @@
                         <li><a href="{{asset('fonend/')}}">Home</a></li>
                         <li><a href="{{asset('fonend/sanpham')}}">Sản  Phẩm</a></li>
                     
-                       <li><a href="">Liên  Hệ</a></li>
+                       <li><a href="{{asset('fonend/lienhe')}}">Liên  Hệ</a></li>
                      
                     </ul>
                 </nav>
@@ -203,8 +206,8 @@
                             <a href="#"><img src="img/footer-logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
+                            <li>Address: Hồ Chí Minh</li>
+                            <li>Phone: +19000333</li>
                             <li>Email:lucuong837@gmail.com</li>
                         </ul>
                         <div class="footer-social">
@@ -215,36 +218,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 offset-lg-1">
-                    <div class="footer-widget">
-                        <h5>Information</h5>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Serivius</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="footer-widget">
-                        <h5>My Account</h5>
-                        <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Shop</a></li>
-                        </ul>
-                    </div>
-                </div>
+        
                 <div class="col-lg-4">
                     <div class="newslatter-item">
-                        <h5>Join Our Newsletter Now</h5>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#" class="subscribe-form">
-                            <input type="text" placeholder="Enter Your Mail">
-                            <button type="button">Subscribe</button>
-                        </form>
+                        <h5>Đồ Cơ  Khí</h5>
+                      
                     </div>
                 </div>
             </div>

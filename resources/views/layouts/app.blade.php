@@ -97,6 +97,12 @@
                                
                              
                             </li>
+                              <li class="nav-item dropdown">
+                               
+                            <a href="{{url('/getCustom')}}" class="nav-link">Khách Hàng</a>
+                               
+                             
+                            </li>
                         @endguest
                     </ul>
                 </div>
